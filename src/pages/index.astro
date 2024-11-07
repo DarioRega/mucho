@@ -2,10 +2,120 @@
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import Hero from "../components/Hero.astro";
+import ContentSection from "../components/ContentSection.astro";
+import { Image } from 'astro:assets';
+import eventImage from '../images/even.webp'
+import aboutImage from '../images/apropo.webp'
+import menuImage from '../images/menu.webp'
+import Footer from "../components/Footer.astro";
+
+const snacks = [
+	{ name: "Burrata", price: 8.5 },
+	{ name: "Ricotta & Anchovies", price: 7.0 },
+	{ name: "Chaource", price: 9.5 },
+	{ name: "Chevre & Tomato", price: 6.5 },
+	{ name: "Chorizo", price: 5.5 },
+	{ name: "Mackerel Escabeche", price: 7.5 },
+	{ name: "Bread & Olive oil", price: 4.0 },
+	{ name: "Olives", price: 3.5 }
+];
+
+const wines = [
+	{ name: "Chardonnay", price: 28 },
+	{ name: "Pinot Noir", price: 35 },
+	{ name: "Cabernet Sauvignon", price: 32 },
+	{ name: "Bottle / By The glass", descritpion: 'Ask us in the bar' },
+];
+
 ---
 
 <Layout title="Welcome to Astro.">
-<main class="relative">
+<main class="relative space-y-12 md:space-y-32">
 	<Hero />
+
+	<!--Events-->
+	<ContentSection>
+		<Fragment slot="left">
+			<div class="pb-8 md:pr-12 xl:pr-24 my-auto">
+				<h2 id="event" class="text-xl"><strong>Wine tasting event</strong> <span class="font-light">29.12.12 @ Mucho bar</span></h2>
+
+				<p class="font-light text-xl leading-relaxed">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				</p>
+			</div>
+		</Fragment>
+
+		<Fragment slot="right">
+			<Image src={eventImage} width={500} height={300} alt="about" />
+
+
+		</Fragment>
+	</ContentSection>
+
+	<!--About-->
+	<ContentSection>
+		<Fragment slot="left">
+			<div class="order-2 md:order-1">
+			<Image src={aboutImage} alt="about" />
+			</div>
+
+		</Fragment>
+
+		<Fragment slot="right">
+			<div class="order-1 md:order-2" id="about">
+			<div class="pt-8 md:pl-12 xl:pl-24 my-auto">
+				<p  class="font-light text-xl leading-relaxed">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+			</div>
+			</div>
+
+		</Fragment>
+	</ContentSection>
+
+	<!--Menu-->
+	<ContentSection>
+		<Fragment slot="left">
+			<div class="pb-8 md:pr-12 xl:pr-24 my-auto space-y-4">
+				<h2 class="text-xl" id="menu"><strong>MENU</strong> change according to season</h2>
+					<dl>
+						<h3 class="text-lg"><strong>SNACKS</strong></h3>
+
+						{snacks.map(snack => (
+							<div class="justify-between flex text-lg font-light ">
+							<dt>
+								{snack.name}
+							</dt>
+							<dd>
+								{snack.price},-
+							</dd>
+							</div>
+
+						))}
+					</dl>
+				<dl>
+					<h3 class="text-lg"><strong>WINES</strong></h3>
+
+					{wines.map(wine => (
+						<div class="justify-between flex text-lg font-light ">
+							<dt>
+								{wine.name}
+							</dt>
+							<dd>
+								{wine.descritpion && wine.descritpion}
+								{(wine.price && !wine.descritpion) && `${wine.price}.-`}
+							</dd>
+						</div>
+
+					))}
+				</dl>
+			</div>
+		</Fragment>
+
+		<Fragment slot="right">
+			<Image src={menuImage} alt="about" />
+		</Fragment>
+	</ContentSection>
+	<Footer />
 </main>
 </Layout>
