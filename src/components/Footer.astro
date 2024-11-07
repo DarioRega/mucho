@@ -1,0 +1,61 @@
+---
+const address = {
+    street: ''
+
+}
+const links = [
+    {
+        url: 'mailto:muchobar@benja.ch',
+        name: 'Contact'
+    },
+    {
+        url:'https://instagram.com',
+        name: 'Instagram'
+    }
+]
+
+---
+<footer id="contact" class="grid md:grid-cols-3 justify-center content-center items-center space-y-6">
+    <div class="text-center md:text-left">
+        <h3 class="text-xl font-medium">
+            <strong>
+            MUCHO BAR
+            </strong>
+        </h3>
+        <div class="font-light text-lg">
+        <p>
+            Avenue de la Gare 1
+        </p>
+        <p>
+            2000 Neuchâtel
+        </p>
+        </div>
+    </div>
+    <div class="text-center">
+        <h3 class="text-xl font-medium">
+            <strong>
+                INFORMATION
+            </strong>
+        </h3>
+        <div class="font-light text-lg">
+            {links.map(link=> (
+                <a href={link.url} target="_blank" rel="noopener noreferrer">
+                    {link.name}
+                </a>
+            ))}
+        </div>
+    </div>
+
+    <div class="text-center md:text-right">
+        <h3 class="text-xl font-medium">
+            <strong>
+                OPENING HOURS
+            </strong>
+        </h3>
+        <div class="font-light text-lg">
+            <p>
+                Mon-Sun 12-24
+            </p>
+        </div>
+    </div>
+</footer>
