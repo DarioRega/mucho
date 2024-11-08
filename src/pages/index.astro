@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
 import Hero from "../components/Hero.astro";
 import ContentSection from "../components/ContentSection.astro";
 import { Image } from 'astro:assets';
@@ -46,7 +45,10 @@ const wines = [
 		</Fragment>
 
 		<Fragment slot="right">
-			<Image src={eventImage} width={500} height={300} alt="about" />
+			<!--TODO FIX EXPORT-->
+			<!--<Image src={eventImage} width={500} height={300} alt="about" />-->
+			<img src={eventImage.src} width={500} height={300} alt="about" />
+
 
 
 		</Fragment>
@@ -56,7 +58,9 @@ const wines = [
 	<ContentSection>
 		<Fragment slot="left">
 			<div class="order-2 md:order-1">
-			<Image src={aboutImage} alt="about" />
+				<!--TODO FIX EXPORT-->
+			<!--<Image src={aboutImage} alt="about" />-->
+			<img src={aboutImage.src} alt="about" />
 			</div>
 
 		</Fragment>
@@ -113,7 +117,9 @@ const wines = [
 		</Fragment>
 
 		<Fragment slot="right">
-			<Image src={menuImage} alt="about" />
+			<!--TODO FIX EXPORT-->
+			<!--<Image src={menuImage} alt="about" />-->
+			<img src={menuImage.src} alt="about" />
 		</Fragment>
 	</ContentSection>
 	<Footer />
