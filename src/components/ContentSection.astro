@@ -1,7 +1,10 @@
 ---
-const { reverse } = Astro.props
+const { reverse } = Astro.props;
 ---
-<section class={`md:flex items-center justify-center ${reverse ? 'md:flex-row-reverse' : ''}`}>
-        <slot name="left" />
-        <slot name="right" />
+
+<section
+  class={`md:flex items-center justify-center ${reverse ? "md:flex-row-reverse" : ""}`}
+>
+  <slot name="left" />
+  <slot name="right" />
 </section>

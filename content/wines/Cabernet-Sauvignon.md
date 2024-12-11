@@ -1,6 +1,5 @@
 ---
 name: Cabernet Sauvignon
-price: '46'
+price: "46"
 order: 3
 ---
-

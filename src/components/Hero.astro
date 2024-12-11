@@ -1,33 +1,36 @@
 ---
 import Logo from "./Logo.astro";
-import HorizontalLogo from "./HorizontalLogo.astro";
 ---
-<section class="min-h-screen-sm md:min-h-screen bg-primary justify-center md:justify-between flex-col flex items-center">
-    <nav class="absolute top-0 inset-x-0 justify-between w-full mt-4 md:mt-10 flex">
-        <a class="text-primary text-base md:text-2xl font-medium" href="#about">
-            A PROPOS
-        </a>
-        <a class="text-primary  text-base md:text-2xl font-medium " href="#menu">
-            MENU
-        </a>
-        <a class="text-primary  text-base md:text-2xl font-medium" href="#contact">
-            CONTACT
-        </a>
-    </nav>
-    <div>
-    </div>
-<div>
+
+<section
+  class="min-h-screen-sm bg-primary flex flex-col items-center justify-center md:min-h-screen md:justify-between"
+>
+  <nav
+    class="absolute inset-x-0 top-0 mt-4 flex w-full justify-between md:mt-10"
+  >
+    <a class="text-primary text-base font-medium md:text-2xl" href="#about">
+      A PROPOS
+    </a>
+    <a class="text-primary text-base font-medium md:text-2xl" href="#menu">
+      MENU
+    </a>
+    <a class="text-primary text-base font-medium md:text-2xl" href="#contact">
+      CONTACT
+    </a>
+  </nav>
+  <div></div>
+  <div>
     <div class="flex justify-center">
-    <Logo class=""/>
+      <Logo class="" />
     </div>
-    <h1 class="text-primary text-center mt-6 font-bold text-3xl md:text-6xl">
-        CAFE, BAR Y COSITAS
+    <h1 class="text-primary mt-6 text-center text-3xl font-bold md:text-6xl">
+      CAFE, BAR Y COSITAS
     </h1>
-    <div class=" text-center italic text-xl md:hidden mt-12 text-primary">
-        Avenue de la Gare 1, 2000 Neuchâtel
+    <div class="text-primary mt-12 text-center text-xl italic md:hidden">
+      Avenue de la Gare 1, 2000 Neuchâtel
     </div>
-</div>
-    <div class=" text-center italic hidden md:block text-2xl mb-6 text-primary">
-        Avenue de la Gare 1, 2000 Neuchâtel
-    </div>
+  </div>
+  <div class="text-primary mb-6 hidden text-center text-2xl italic md:block">
+    Avenue de la Gare 1, 2000 Neuchâtel
+  </div>
 </section>

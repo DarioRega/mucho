@@ -1,10 +1,10 @@
 import { defineConfig } from "tinacms";
 
 const branch =
-    process.env.GITHUB_BRANCH ||
-    process.env.VERCEL_GIT_COMMIT_REF ||
-    process.env.HEAD ||
-    "main";
+  process.env.GITHUB_BRANCH ||
+  process.env.VERCEL_GIT_COMMIT_REF ||
+  process.env.HEAD ||
+  "main";
 
 export default defineConfig({
   branch,
@@ -13,13 +13,13 @@ export default defineConfig({
 
   build: {
     outputFolder: "admin",
-    publicFolder: "public",
+    publicFolder: "public"
   },
   media: {
     tina: {
       mediaRoot: "",
-      publicFolder: "public",
-    },
+      publicFolder: "public"
+    }
   },
   schema: {
     collections: [
@@ -29,7 +29,7 @@ export default defineConfig({
         path: "content/events",
         ui: {
           filename: {
-            readonly: true,
+            readonly: true
           }
         },
         fields: [
@@ -38,33 +38,33 @@ export default defineConfig({
             name: "title",
             label: "Title",
             isTitle: true,
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "whenAndWhere",
-            label: "When and where",
+            label: "When and where"
           },
           {
-            label: 'Description',
-            name: 'description',
-            type: 'string',
+            label: "Description",
+            name: "description",
+            type: "string",
             required: true,
             ui: {
-              component: 'textarea',
-            },
+              component: "textarea"
+            }
           },
           {
-            type: 'image',
-            label: 'Image',
-            name: 'imgSrc',
+            type: "image",
+            label: "Image",
+            name: "imgSrc"
           },
           {
             type: "boolean",
             name: "active",
-            label: "Active",
-          },
-        ],
+            label: "Active"
+          }
+        ]
       },
       {
         name: "section",
@@ -72,7 +72,7 @@ export default defineConfig({
         path: "content/sections",
         ui: {
           filename: {
-            readonly: true,
+            readonly: true
           }
         },
         fields: [
@@ -81,37 +81,37 @@ export default defineConfig({
             name: "title",
             label: "Title",
             isTitle: true,
-            required: true,
+            required: true
           },
           {
             type: "boolean",
             name: "showTitle",
-            label: "Show title ?",
+            label: "Show title ?"
           },
           {
-            label: 'Description',
-            name: 'description',
-            type: 'string',
+            label: "Description",
+            name: "description",
+            type: "string",
             ui: {
-              component: 'textarea',
-            },
+              component: "textarea"
+            }
           },
           {
-            type: 'image',
-            label: 'Image',
-            name: 'imgSrc',
+            type: "image",
+            label: "Image",
+            name: "imgSrc"
           },
           {
-            type: 'boolean',
-            label: 'Is this the Menu section ?',
-            name: 'isMenu',
+            type: "boolean",
+            label: "Is this the Menu section ?",
+            name: "isMenu"
           },
           {
             type: "number",
             name: "order",
-            label: "Order",
-          },
-        ],
+            label: "Order"
+          }
+        ]
       },
       {
         name: "snack",
@@ -119,7 +119,7 @@ export default defineConfig({
         path: "content/snacks",
         ui: {
           filename: {
-            readonly: true,
+            readonly: true
           }
         },
         fields: [
@@ -128,21 +128,21 @@ export default defineConfig({
             name: "name",
             type: "string",
             required: true,
-            isTitle: true,
+            isTitle: true
           },
           {
             label: "Price",
             name: "price",
             type: "string",
-            required: true,
+            required: true
           },
           {
             type: "number",
             name: "order",
             label: "Order",
-            required: true,
-          },
-        ],
+            required: true
+          }
+        ]
       },
       {
         name: "wine",
@@ -150,7 +150,7 @@ export default defineConfig({
         path: "content/wines",
         ui: {
           filename: {
-            readonly: true,
+            readonly: true
           }
         },
         fields: [
@@ -159,21 +159,21 @@ export default defineConfig({
             name: "name",
             type: "string",
             required: true,
-            isTitle: true,
+            isTitle: true
           },
           {
             label: "Price",
             name: "price",
             type: "string",
-            required: true,
+            required: true
           },
           {
             type: "number",
             name: "order",
             label: "Order",
-            required: true,
-          },
-        ],
+            required: true
+          }
+        ]
       },
       {
         name: "cocktail",
@@ -181,7 +181,7 @@ export default defineConfig({
         path: "content/cocktails",
         ui: {
           filename: {
-            readonly: true,
+            readonly: true
           }
         },
         fields: [
@@ -190,22 +190,22 @@ export default defineConfig({
             name: "name",
             type: "string",
             required: true,
-            isTitle: true,
+            isTitle: true
           },
           {
             label: "Price",
             name: "price",
             type: "string",
-            required: true,
+            required: true
           },
           {
             type: "number",
             name: "order",
             label: "Order",
-            required: true,
-          },
-        ],
-      },
-    ],
-  },
+            required: true
+          }
+        ]
+      }
+    ]
+  }
 });

@@ -6,11 +6,14 @@
     "dev": "tinacms dev -c \"astro dev\"",
     "start": "astro dev",
     "build": "astro build",
+    "format:fix": "pnpm exec prettier . --write",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "astro": "^4.16.10",
+    "prettier": "^3.4.2",
+    "prettier-plugin-tailwindcss": "^0.6.9",
     "tinacms": "^2.5.0",
     "typescript": "^5.6.3"
   },
@@ -18,6 +21,7 @@
     "@tinacms/cli": "^1.6.12",
     "@types/node": "^22.10.0",
     "@unocss/reset": "^0.64.0",
+    "prettier-plugin-astro": "^0.14.1",
     "unocss": "^0.64.0"
   }
 }

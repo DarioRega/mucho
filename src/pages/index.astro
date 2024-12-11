@@ -1,132 +1,153 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import ContentSection from "../components/ContentSection.astro";
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 import Footer from "../components/Footer.astro";
 import client from "../../tina/__generated__/client";
 
-
-const eventResponse = await client.queries.eventConnection()
+const eventResponse = await client.queries.eventConnection();
 const event = eventResponse.data.eventConnection.edges
-	.map((edge) => edge.node)
-	.find((event) => event.active)
+  .map((edge) => edge.node)
+  .find((event) => event.active);
 
-
-const sectionsResponse = await client.queries.sectionConnection()
-const _sections = sectionsResponse.data.sectionConnection.edges
-	.map((edge) => edge.node)
-
+const sectionsResponse = await client.queries.sectionConnection();
+const _sections = sectionsResponse.data.sectionConnection.edges.map(
+  (edge) => edge.node
+);
 
 const sections = _sections
-	.filter(section => !section.isMenu)
-	.sort((a, b) => a.order - b.order)
+  .filter((section) => !section.isMenu)
+  .sort((a, b) => a.order - b.order);
 
-console.log('sections lenght',sections.length)
-const menuSection = _sections.find(section => {
-	return section.isMenu
-})
+console.log("sections lenght", sections.length);
+const menuSection = _sections.find((section) => {
+  return section.isMenu;
+});
 
 const snacksResponse = await client.queries.snackConnection();
 const snacks = snacksResponse.data.snackConnection.edges
-	.map((edge) => edge.node)
-	.sort((a, b) => a.order - b.order)
+  .map((edge) => edge.node)
+  .sort((a, b) => a.order - b.order);
 
 const winesResponse = await client.queries.wineConnection();
 const wines = winesResponse.data.wineConnection.edges
-	.map((edge) => edge.node)
-	.sort((a, b) => a.order - b.order)
+  .map((edge) => edge.node)
+  .sort((a, b) => a.order - b.order);
 ---
 
 <Layout title="Welcome to Astro.">
-<main class="relative space-y-12 md:space-y-32">
-	<Hero />
-	<!--Events-->
-	<ContentSection>
-		<Fragment slot="left">
-			<div class="py-8 md:pr-12 xl:pr-24 my-auto md:w-1/2">
-				<h2 id="event" class="text-xl"><strong>{event.title}</strong> <span class="font-light">{event.whenAndWhere}</span></h2>
+  <main class="relative space-y-12 md:space-y-32">
+    <Hero />
+    <!--Events-->
+    <ContentSection>
+      <Fragment slot="left">
+        <div class="my-auto py-8 md:w-1/2 md:pr-12 xl:pr-24">
+          <h2 id="event" class="text-xl">
+            <strong>{event.title}</strong>
+            <span class="font-light">{event.whenAndWhere}</span>
+          </h2>
 
-				<p class="font-light text-xl leading-relaxed whitespace-pre-line">
-					{event.description}
-				</p>
-			</div>
-		</Fragment>
+          <p class="whitespace-pre-line text-xl font-light leading-relaxed">
+            {event.description}
+          </p>
+        </div>
+      </Fragment>
 
-		<Fragment slot="right">
-			<Image src={event.imgSrc} alt={event.title} width="600" height="80" class="w-1/2" />
+      <Fragment slot="right">
+        <Image
+          src={event.imgSrc}
+          alt={event.title}
+          width="600"
+          height="80"
+          class="w-1/2"
+        />
+      </Fragment>
+    </ContentSection>
 
-		</Fragment>
-	</ContentSection>
+    {
+      sections.map((section, idx) => (
+        <ContentSection key={section.id} reverse={idx % 2 !== 0}>
+          <Fragment slot="left">
+            <div class="order-2 md:order-1 md:w-1/2">
+              {idx}
 
-	{sections.map((section, idx) => (
-	<ContentSection key={section.id} reverse={idx % 2 !== 0}>
-		<Fragment slot="left">
-			<div class="order-2 md:order-1 md:w-1/2">
-				{idx}
+              <Image
+                src={section.imgSrc}
+                alt={section.title}
+                width="600"
+                height="80"
+              />
+            </div>
+          </Fragment>
 
-			<Image src={section.imgSrc} alt={section.title} width="600" height="80" />
-			</div>
+          <Fragment slot="right">
+            <div class="order-1 md:order-2 md:w-1/2" id="about">
+              <div
+                class:list={[
+                  "my-auto py-8",
+                  idx % 2 !== 0 ? "md:pr-12 xl:pr-24" : "md:pl-12 xl:pl-24"
+                ]}
+              >
+                {section.showTitle && (
+                  <h2 class="text-xl">
+                    <strong>{section.title}</strong>
+                  </h2>
+                )}
+                <p class="whitespace-pre-line text-xl font-light leading-relaxed">
+                  {section.description}
+                </p>
+              </div>
+            </div>
+          </Fragment>
+        </ContentSection>
+      ))
+    }
 
-		</Fragment>
+    <!--Menu-->
+    <ContentSection>
+      <Fragment slot="left">
+        <div class="my-auto space-y-4 pb-8 md:w-1/2 md:pr-12 xl:pr-24">
+          <h2 class="text-xl" id="menu">
+            <strong>MENU</strong> change according to season
+          </h2>
+          <dl>
+            <h3 class="text-lg"><strong>SNACKS</strong></h3>
 
-		<Fragment slot="right" >
-		<div class="order-1 md:order-2 md:w-1/2" id="about">
-			<div class:list={['py-8 my-auto',idx % 2 !== 0 ? 'md:pr-12 xl:pr-24' : 'md:pl-12 xl:pl-24']}>
-				{section.showTitle && <h2 class="text-xl"><strong>{section.title}</strong></h2> }
-				<p
-					class="font-light text-xl leading-relaxed whitespace-pre-line">
-					{section.description}
-				</p>
-			</div>
-			</div>
-		</Fragment>
-	</ContentSection>
+            {
+              snacks.map((snack) => (
+                <div class="flex justify-between text-lg font-light">
+                  <dt>{snack.name}</dt>
+                  <dd>{snack.price}</dd>
+                </div>
+              ))
+            }
+          </dl>
+          <dl>
+            <h3 class="text-lg"><strong>WINES</strong></h3>
 
-	))}
+            {
+              wines.map((wine) => (
+                <div class="flex justify-between text-lg font-light">
+                  <dt>{wine.name}</dt>
+                  <dd>{wine.price}</dd>
+                </div>
+              ))
+            }
+          </dl>
+        </div>
+      </Fragment>
 
-	<!--Menu-->
-	<ContentSection>
-		<Fragment slot="left">
-			<div class="pb-8 md:pr-12 xl:pr-24 my-auto space-y-4 md:w-1/2">
-				<h2 class="text-xl" id="menu"><strong>MENU</strong> change according to season</h2>
-					<dl>
-						<h3 class="text-lg"><strong>SNACKS</strong></h3>
-
-						{snacks.map(snack => (
-							<div class="justify-between flex text-lg font-light ">
-							<dt>
-								{snack.name}
-							</dt>
-							<dd>
-								{snack.price}
-							</dd>
-							</div>
-
-						))}
-					</dl>
-				<dl>
-					<h3 class="text-lg"><strong>WINES</strong></h3>
-
-					{wines.map(wine => (
-						<div class="justify-between flex text-lg font-light ">
-							<dt>
-								{wine.name}
-							</dt>
-							<dd>
-								{wine.price}
-							</dd>
-						</div>
-
-					))}
-				</dl>
-			</div>
-		</Fragment>
-
-		<Fragment slot="right">
-			<Image src={menuSection?.imgSrc} alt={menuSection?.title} width="600" height="80" class="w-1/2" />
-		</Fragment>
-	</ContentSection>
-	<Footer />
-</main>
+      <Fragment slot="right">
+        <Image
+          src={menuSection?.imgSrc}
+          alt={menuSection?.title}
+          width="600"
+          height="80"
+          class="w-1/2"
+        />
+      </Fragment>
+    </ContentSection>
+    <Footer />
+  </main>
 </Layout>
