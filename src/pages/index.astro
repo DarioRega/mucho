@@ -3,84 +3,92 @@ import Layout from '../layouts/Layout.astro';
 import Hero from "../components/Hero.astro";
 import ContentSection from "../components/ContentSection.astro";
 import { Image } from 'astro:assets';
-import eventImage from '../images/even.webp'
-import aboutImage from '../images/apropo.webp'
-import menuImage from '../images/menu.webp'
 import Footer from "../components/Footer.astro";
+import client from "../../tina/__generated__/client";
 
-const snacks = [
-	{ name: "Burrata", price: 8.5 },
-	{ name: "Ricotta & Anchovies", price: 7.0 },
-	{ name: "Chaource", price: 9.5 },
-	{ name: "Chevre & Tomato", price: 6.5 },
-	{ name: "Chorizo", price: 5.5 },
-	{ name: "Mackerel Escabeche", price: 7.5 },
-	{ name: "Bread & Olive oil", price: 4.0 },
-	{ name: "Olives", price: 3.5 }
-];
 
-const wines = [
-	{ name: "Chardonnay", price: 28 },
-	{ name: "Pinot Noir", price: 35 },
-	{ name: "Cabernet Sauvignon", price: 32 },
-	{ name: "Bottle / By The glass", descritpion: 'Ask us in the bar' },
-];
+const eventResponse = await client.queries.eventConnection()
+const event = eventResponse.data.eventConnection.edges
+	.map((edge) => edge.node)
+	.find((event) => event.active)
 
+
+const sectionsResponse = await client.queries.sectionConnection()
+const _sections = sectionsResponse.data.sectionConnection.edges
+	.map((edge) => edge.node)
+
+
+const sections = _sections
+	.filter(section => !section.isMenu)
+	.sort((a, b) => a.order - b.order)
+
+console.log('sections lenght',sections.length)
+const menuSection = _sections.find(section => {
+	return section.isMenu
+})
+
+const snacksResponse = await client.queries.snackConnection();
+const snacks = snacksResponse.data.snackConnection.edges
+	.map((edge) => edge.node)
+	.sort((a, b) => a.order - b.order)
+
+const winesResponse = await client.queries.wineConnection();
+const wines = winesResponse.data.wineConnection.edges
+	.map((edge) => edge.node)
+	.sort((a, b) => a.order - b.order)
 ---
 
 <Layout title="Welcome to Astro.">
 <main class="relative space-y-12 md:space-y-32">
 	<Hero />
-
 	<!--Events-->
 	<ContentSection>
 		<Fragment slot="left">
-			<div class="pb-8 md:pr-12 xl:pr-24 my-auto">
-				<h2 id="event" class="text-xl"><strong>Wine tasting event</strong> <span class="font-light">29.12.12 @ Mucho bar</span></h2>
+			<div class="py-8 md:pr-12 xl:pr-24 my-auto md:w-1/2">
+				<h2 id="event" class="text-xl"><strong>{event.title}</strong> <span class="font-light">{event.whenAndWhere}</span></h2>
 
-				<p class="font-light text-xl leading-relaxed">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				<p class="font-light text-xl leading-relaxed whitespace-pre-line">
+					{event.description}
 				</p>
 			</div>
 		</Fragment>
 
 		<Fragment slot="right">
-			<!--TODO FIX EXPORT-->
-			<!--<Image src={eventImage} width={500} height={300} alt="about" />-->
-			<img src={eventImage.src} width={500} height={300} alt="about" />
-
-
+			<Image src={event.imgSrc} alt={event.title} width="600" height="80" class="w-1/2" />
 
 		</Fragment>
 	</ContentSection>
 
-	<!--About-->
-	<ContentSection>
+	{sections.map((section, idx) => (
+	<ContentSection key={section.id} reverse={idx % 2 !== 0}>
 		<Fragment slot="left">
-			<div class="order-2 md:order-1">
-				<!--TODO FIX EXPORT-->
-			<!--<Image src={aboutImage} alt="about" />-->
-			<img src={aboutImage.src} alt="about" />
+			<div class="order-2 md:order-1 md:w-1/2">
+				{idx}
+
+			<Image src={section.imgSrc} alt={section.title} width="600" height="80" />
 			</div>
 
 		</Fragment>
 
-		<Fragment slot="right">
-			<div class="order-1 md:order-2" id="about">
-			<div class="pb-8 md:pt-8 md:pl-12 xl:pl-24 my-auto">
-				<p  class="font-light text-xl leading-relaxed">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		<Fragment slot="right" >
+		<div class="order-1 md:order-2 md:w-1/2" id="about">
+			<div class:list={['py-8 my-auto',idx % 2 !== 0 ? 'md:pr-12 xl:pr-24' : 'md:pl-12 xl:pl-24']}>
+				{section.showTitle && <h2 class="text-xl"><strong>{section.title}</strong></h2> }
+				<p
+					class="font-light text-xl leading-relaxed whitespace-pre-line">
+					{section.description}
 				</p>
 			</div>
 			</div>
-
 		</Fragment>
 	</ContentSection>
+
+	))}
 
 	<!--Menu-->
 	<ContentSection>
 		<Fragment slot="left">
-			<div class="pb-8 md:pr-12 xl:pr-24 my-auto space-y-4">
+			<div class="pb-8 md:pr-12 xl:pr-24 my-auto space-y-4 md:w-1/2">
 				<h2 class="text-xl" id="menu"><strong>MENU</strong> change according to season</h2>
 					<dl>
 						<h3 class="text-lg"><strong>SNACKS</strong></h3>
@@ -91,7 +99,7 @@ const wines = [
 								{snack.name}
 							</dt>
 							<dd>
-								{snack.price},-
+								{snack.price}
 							</dd>
 							</div>
 
@@ -106,8 +114,7 @@ const wines = [
 								{wine.name}
 							</dt>
 							<dd>
-								{wine.descritpion && wine.descritpion}
-								{(wine.price && !wine.descritpion) && `${wine.price}.-`}
+								{wine.price}
 							</dd>
 						</div>
 
@@ -117,9 +124,7 @@ const wines = [
 		</Fragment>
 
 		<Fragment slot="right">
-			<!--TODO FIX EXPORT-->
-			<!--<Image src={menuImage} alt="about" />-->
-			<img src={menuImage.src} alt="about" />
+			<Image src={menuSection?.imgSrc} alt={menuSection?.title} width="600" height="80" class="w-1/2" />
 		</Fragment>
 	</ContentSection>
 	<Footer />
