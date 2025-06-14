@@ -15,6 +15,7 @@ description: >
 
   Notre mission sera toujours de proposer la meilleure sélection de vins
   possible pour que la fête soit belle.
-imgSrc: /118481713_3489699574414246_4425322130794974100_n.jpg
+imgSrc: /desert-813924_1280.jpg
 order: 1
 ---
+
