@@ -36,40 +36,43 @@ const wines = winesResponse.data.wineConnection.edges
   .sort((a, b) => a.order - b.order);
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="MUCHO CAFE, BAR Y MUCHO MAS">
   <main class="relative space-y-12 md:space-y-16 lg:space-y-24">
     <Hero />
     <!--Events-->
-    <ContentSection>
-      <Fragment slot="left">
-        <div class="my-auto py-8 md:w-1/2 md:pr-12 xl:pr-24">
-          <h2 id="event" class="text-xl">
-            <strong>{event.title}</strong>
-            <span class="font-light">{event.whenAndWhere}</span>
-          </h2>
+    {
+      !!event && (
+        <ContentSection>
+          <Fragment slot="left">
+            <div class="my-auto py-2 pt-8 md:w-1/2 md:py-8 md:pr-12 xl:pr-24">
+              <h2 id="event" class="text-xl">
+                <strong>{event.title}</strong>
+                <span class="font-light">{event.whenAndWhere}</span>
+              </h2>
 
-          <p class="whitespace-pre-line text-xl font-light leading-relaxed">
-            {event.description}
-          </p>
-        </div>
-      </Fragment>
+              <p class="whitespace-pre-line text-xl font-light leading-relaxed">
+                {event.description}
+              </p>
+            </div>
+          </Fragment>
 
-      <Fragment slot="right">
-        <Image
-          src={event.imgSrc}
-          alt={event.title}
-          width="600"
-          height="80"
-          class="w-1/2"
-        />
-      </Fragment>
-    </ContentSection>
-
+          <Fragment slot="right">
+            <Image
+              src={event.imgSrc}
+              alt={event.title}
+              width="600"
+              height="80"
+              class="max-w-xs sm:max-w-md md:w-1/2 md:max-w-full"
+            />
+          </Fragment>
+        </ContentSection>
+      )
+    }
     {
       sections.map((section, idx) => (
         <ContentSection key={section.id} reverse={idx % 2 !== 0}>
           <Fragment slot="left">
-            <div class="order-2 md:order-1 md:w-1/2">
+            <div class="order-2 max-w-xs sm:max-w-md md:order-1 md:w-1/2 md:max-w-full">
               <Image
                 src={section.imgSrc}
                 alt={section.title}
@@ -80,10 +83,10 @@ const wines = winesResponse.data.wineConnection.edges
           </Fragment>
 
           <Fragment slot="right">
-            <div class="order-1 md:order-2 md:w-1/2" id="about">
+            <div class="order-1 pt-8 md:order-2 md:w-1/2" id="about">
               <div
                 class:list={[
-                  "my-auto py-8",
+                  "my-auto py-2 md:py-8",
                   idx % 2 !== 0 ? "md:pr-12 xl:pr-24" : "md:pl-12 xl:pl-24"
                 ]}
               >
@@ -105,7 +108,7 @@ const wines = winesResponse.data.wineConnection.edges
     <!--Menu-->
     <ContentSection>
       <Fragment slot="left">
-        <div class="my-auto space-y-4 pb-8 md:w-1/2 md:pr-12 xl:pr-24">
+        <div class="my-auto space-y-4 pt-8 md:w-1/2 md:pr-12 xl:pr-24">
           <h2 class="text-xl" id="menu">
             <strong>MENU</strong> change au fil des saisons et de nos humeurs
           </h2>
@@ -142,10 +145,25 @@ const wines = winesResponse.data.wineConnection.edges
           alt={menuSection?.title}
           width="600"
           height="80"
-          class="w-1/2"
+          class="max-w-xs sm:max-w-md md:w-1/2 md:max-w-full"
         />
       </Fragment>
     </ContentSection>
-    <Footer />
+    <div>
+      <Footer />
+      <script type="module">
+        (function (d, s, id) {
+          console.log("Loading Zenchef SDK");
+          const el = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id) || el.parentNode == null) return;
+          var js = d.createElement(s);
+          js.id = id;
+          js.src = "https://sdk.zenchef.com/v1/sdk.min.js";
+          el.parentNode.insertBefore(js, el);
+        })(document, "script", "zenchef-sdk");
+      </script>
+      <div class="zc-widget-config" data-restaurant="376300" data-open="2000">
+      </div>
+    </div>
   </main>
 </Layout>

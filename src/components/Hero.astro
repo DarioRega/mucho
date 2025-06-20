@@ -3,10 +3,10 @@ import Logo from "./Logo.astro";
 ---
 
 <section
-  class="min-h-screen-sm bg-primary flex flex-col items-center justify-center md:min-h-screen md:justify-between"
+  class="bg-primary mb-10 flex flex-col items-center justify-center md:min-h-screen md:justify-between"
 >
   <nav
-    class="absolute inset-x-0 top-0 mt-4 flex w-full justify-between md:mt-10"
+    class="absolute inset-x-0 top-0 mt-8 flex w-full justify-between md:mt-10"
   >
     <a class="text-primary text-base font-medium md:text-2xl" href="#about">
       A PROPOS
@@ -18,8 +18,8 @@ import Logo from "./Logo.astro";
       CONTACT
     </a>
   </nav>
-  <div></div>
-  <div>
+  <div class="mt-10 md:mt-0"></div>
+  <div class="hidden md:block">
     <div class="flex justify-center">
       <Logo class="" />
     </div>
