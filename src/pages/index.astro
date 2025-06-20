@@ -37,7 +37,7 @@ const wines = winesResponse.data.wineConnection.edges
 ---
 
 <Layout title="Welcome to Astro.">
-  <main class="relative space-y-12 md:space-y-32">
+  <main class="relative space-y-12 md:space-y-16 lg:space-y-24">
     <Hero />
     <!--Events-->
     <ContentSection>
@@ -70,8 +70,6 @@ const wines = winesResponse.data.wineConnection.edges
         <ContentSection key={section.id} reverse={idx % 2 !== 0}>
           <Fragment slot="left">
             <div class="order-2 md:order-1 md:w-1/2">
-              {idx}
-
               <Image
                 src={section.imgSrc}
                 alt={section.title}
@@ -109,7 +107,7 @@ const wines = winesResponse.data.wineConnection.edges
       <Fragment slot="left">
         <div class="my-auto space-y-4 pb-8 md:w-1/2 md:pr-12 xl:pr-24">
           <h2 class="text-xl" id="menu">
-            <strong>MENU</strong> change according to season
+            <strong>MENU</strong> change au fil des saisons et de nos humeurs
           </h2>
           <dl>
             <h3 class="text-lg"><strong>SNACKS</strong></h3>
@@ -124,7 +122,7 @@ const wines = winesResponse.data.wineConnection.edges
             }
           </dl>
           <dl>
-            <h3 class="text-lg"><strong>WINES</strong></h3>
+            <h3 class="text-lg"><strong>VINS</strong></h3>
 
             {
               wines.map((wine) => (

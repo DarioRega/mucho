@@ -4,11 +4,15 @@ const address = {
 };
 const links = [
   {
-    url: "mailto:muchobar@benja.ch",
-    name: "Contact"
+    url: "mailto:hello@muchobar.ch",
+    name: "hello@muchobar.ch"
   },
   {
-    url: "https://instagram.com",
+    url: "tel:+4132 725 04 44",
+    name: "032 725 04 44"
+  },
+  {
+    url: "https://www.instagram.com/mucho_bar/",
     name: "Instagram"
   }
 ];
@@ -16,22 +20,22 @@ const links = [
 
 <footer
   id="contact"
-  class="grid content-center items-center justify-center space-y-6 md:grid-cols-3"
+  class="mx-auto grid max-w-xl grid-cols-1 content-center items-center justify-center gap-y-6 lg:max-w-full lg:grid-cols-3 lg:items-start"
 >
-  <div class="text-center md:text-left">
-    <h3 class="text-xl font-medium">
+  <div class="text-center lg:text-left">
+    <h3 class="mb-2 text-xl font-medium">
       <strong> MUCHO BAR </strong>
     </h3>
-    <div class="text-lg font-light">
+    <div class="text-base font-light md:text-lg">
       <p>Avenue de la Gare 1</p>
       <p>2000 Neuchâtel</p>
     </div>
   </div>
   <div class="text-center">
-    <h3 class="text-xl font-medium">
+    <h3 class="mb-2 text-xl font-medium">
       <strong> INFORMATION </strong>
     </h3>
-    <div class="grid text-lg font-light">
+    <div class="grid text-base font-light md:text-lg">
       {
         links.map((link) => (
           <a href={link.url} target="_blank" rel="noopener noreferrer">
@@ -42,12 +46,46 @@ const links = [
     </div>
   </div>
 
-  <div class="text-center md:text-right">
-    <h3 class="text-xl font-medium">
-      <strong> OPENING HOURS </strong>
+  <div class="text-center lg:text-right">
+    <h3 class="mb-2 text-xl font-medium">
+      <strong> HORAIRES </strong>
     </h3>
-    <div class="text-lg font-light">
-      <p>Mon-Sun 12-24</p>
+    <div class="space-y-1 text-base font-light md:text-lg">
+      <div class="grid grid-cols-5 gap-3">
+        <p>Lu</p>
+        <p class="col-span-2">07:30 - 11:30</p>
+        <p class="col-span-2">Fermé</p>
+      </div>
+      <div class="grid grid-cols-5 gap-3">
+        <p>Ma</p>
+        <p class="col-span-2">07:30 - 11:30</p>
+        <p class="col-span-2">16:30 - 22:00</p>
+      </div>
+      <div class="grid grid-cols-5 gap-3">
+        <p>Me</p>
+        <p class="col-span-2">07:30 - 11:30</p>
+        <p class="col-span-2">16:30 - 00:00</p>
+      </div>
+      <div class="grid grid-cols-5 gap-3">
+        <p>Je</p>
+        <p class="col-span-2">07:30 - 11:30</p>
+        <p class="col-span-2">16:30 - 00:00</p>
+      </div>
+      <div class="grid grid-cols-5 gap-3">
+        <p>Ve</p>
+        <p class="col-span-2">07:30 - 11:30</p>
+        <p class="col-span-2">16:30 - 02:00</p>
+      </div>
+      <div class="grid grid-cols-5 gap-3">
+        <p>Sa</p>
+        <p class="col-span-2">07:30 - 11:30</p>
+        <p class="col-span-2">16:30 - 02:00</p>
+      </div>
+      <div class="grid grid-cols-5 gap-3">
+        <p>Di</p>
+        <p class="col-span-2">Fermé</p>
+        <p class="col-span-2">Fermé</p>
+      </div>
     </div>
   </div>
 </footer>
