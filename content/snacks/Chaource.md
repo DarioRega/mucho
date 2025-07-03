@@ -1,7 +1,8 @@
 ---
 category: snacks
 active: true
-name: Boudin
-price: "12"
+name: Boudin bleu
+price: '14'
 order: 2
 ---
+
