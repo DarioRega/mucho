@@ -1,7 +1,8 @@
 ---
 category: snacks
 active: true
-name: Chevre & Tomato
-price: "6.5"
+name: Entrecôte
+price: '27'
 order: 4
 ---
+
