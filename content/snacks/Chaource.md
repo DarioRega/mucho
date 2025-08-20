@@ -1,8 +1,8 @@
 ---
 category: snacks
 active: true
-name: Boudin bleu
-price: '14'
-order: 2
+name: Olives Marinées
+price: '4'
+order: 1
 ---
 
