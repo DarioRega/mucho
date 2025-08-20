@@ -1,5 +1,6 @@
 ---
-name: Bottle / By The glass
-price: Ask us in the bar
-order: 4
+name: Bouteilles
+price: 'Demandez nous la carte :)'
+order: 6
 ---
+
