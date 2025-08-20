@@ -9,6 +9,6 @@ description: >-
   entre 11:00 et 15:00. Pas de forfait, pas de combo, c'est à la carte et tu
   choisis!
 imgSrc: /Mucho_Brunch.JPG
-active: false
+active: true
 ---
 
