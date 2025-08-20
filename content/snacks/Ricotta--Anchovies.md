@@ -1,7 +1,8 @@
 ---
 category: snacks
 active: true
-name: Ricotta & Anchovies
-price: "7"
-order: 8
+name: Salade grecque
+price: '17'
+order: 9
 ---
+
