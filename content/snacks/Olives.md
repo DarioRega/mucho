@@ -1,6 +1,7 @@
 ---
 category: snacks
-name: Olives
-price: "5.5"
-order: 7
+name: Escalivada
+price: '12.5'
+order: 8
 ---
+
