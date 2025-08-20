@@ -1,6 +1,7 @@
 ---
 category: wines
-name: Chardonnay
-price: "55"
+name: Riesling Silvaner · Hämmerli · Seeland
+price: '8'
 order: 2
 ---
+
