@@ -1,6 +1,7 @@
 ---
 category: snacks
-name: Mackerel Escabeche
-price: "5.4"
-order: 5
+name: Boquerones
+price: '12.5'
+order: 7
 ---
+
