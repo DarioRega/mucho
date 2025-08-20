@@ -1,6 +1,7 @@
 ---
 category: snacks
-name: Chorizo
-price: "5.5"
+name: Brochettes de poulet
+price: '16'
 order: 6
 ---
+
