@@ -1,7 +1,7 @@
 ---
 category: snacks
 active: true
-name: Entrecôte sauce aux herbes
+name: Tagliata de boeuf aux piments d'Urfa
 price: '27'
 order: 4
 ---
