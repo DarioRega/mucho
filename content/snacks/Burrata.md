@@ -1,8 +1,8 @@
 ---
 category: cocktails
 active: false
-name: Pata Negra
-price: '26.5'
+name: Lomo Embuchado Pata Negra
+price: '19'
 order: 3
 ---
 
