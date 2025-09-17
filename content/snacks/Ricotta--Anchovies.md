@@ -1,8 +1,8 @@
 ---
 category: snacks
 active: true
-name: Salade Caesar et anchois 00 de Cantabrie
-price: '17'
+name: 'Haricots blancs gratinés à la grecque '
+price: '14'
 order: 9
 ---
 
