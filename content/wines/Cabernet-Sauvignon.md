@@ -1,6 +1,6 @@
 ---
-name: Chasselas · Cave du Château · Vully
-price: '7.5'
+name: Chasselas · Hämmerli · Seeland
+price: '5.5'
 order: 1
 ---
 
