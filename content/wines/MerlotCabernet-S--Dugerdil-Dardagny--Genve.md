@@ -1,6 +1,6 @@
 ---
-name: Merlot · Dugerdil Dardagny · Genève
-price: '9.5'
+name: Merlot · Agriloro · Ticino
+price: '10'
 order: 4
 ---
 
