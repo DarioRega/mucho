@@ -1,6 +1,6 @@
 ---
 category: wines
-name: Riesling Silvaner · Hämmerli · Seeland
+name: Chardonnay · Dugerdil Dardagny · Genève
 price: '8'
 order: 2
 ---
