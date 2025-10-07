@@ -1,8 +1,8 @@
 ---
 category: snacks
 active: true
-name: 'Haricots blancs gratinés à la grecque '
-price: '14'
+name: Courge rôtie sauce vierge et noix de pécan
+price: '12'
 order: 9
 ---
 
