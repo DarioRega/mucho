@@ -1,7 +1,7 @@
 ---
 category: wines
-name: Chardonnay · Dugerdil Dardagny · Genève
-price: '8'
+name: Sauvignon Blanc · Frauenkopf · Seeland
+price: '9'
 order: 2
 ---
 
