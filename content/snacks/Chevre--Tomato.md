@@ -1,8 +1,8 @@
 ---
 category: snacks
 active: true
-name: Tagliata de boeuf aux piments d'Urfa
-price: '27'
+name: Polpette
+price: '18'
 order: 4
 ---
 
