@@ -1,7 +1,7 @@
 ---
 category: wines
-name: Sauvignon Blanc · Frauenkopf · Seeland
-price: '9'
+name: Chardonnay · Les Lerins · Auvernier
+price: '7.5'
 order: 2
 ---
 
