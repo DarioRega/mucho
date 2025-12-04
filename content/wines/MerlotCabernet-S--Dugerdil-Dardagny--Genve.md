@@ -1,6 +1,6 @@
 ---
-name: Merlot · Agriloro · Ticino
-price: '10'
+name: Pinot Noir Malbec · Frauenkopf · Seeland
+price: '9'
 order: 4
 ---
 
