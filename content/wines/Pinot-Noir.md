@@ -1,6 +1,6 @@
 ---
 category: wines
-name: Chenin · Stanto & Rousseau-Petit · Loire
+name: Viognier · Agrunelles · Loire
 price: '8.5'
 order: 1
 ---
