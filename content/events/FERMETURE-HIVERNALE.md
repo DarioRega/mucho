@@ -1,7 +1,8 @@
 ---
 title: FERMETURE HIVERNALE
-whenAndWhere: Du lundi 29 décembre 2025 au dimanche 11 janvier 2026
+whenAndWhere: lu 29 décembre 2025 - di 11 janvier 2026
 description: |
+
   Amigos, 
 
   Le Mucho Bar sera fermé du lundi 29 décembre 2025 au dimanche 11 janvier 2026.
