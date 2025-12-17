@@ -14,6 +14,7 @@ description: |
   Je  25.12  Fermé
   Ve  26.12  07:30 - 11:30 / 16:30 - 02:00
   Sa  27.12  16:30 - 02:00
+imgSrc: /ff1c7323ee1f1c0789e3f07c7547b157.jpg
 active: true
 ---
 
