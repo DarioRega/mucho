@@ -1,7 +1,7 @@
 ---
 category: snacks
 active: true
-name: Courge rôtie sauce vierge et noix de pécan
+name: 'Carottes rôties, emulsion d''ail & tahina'
 price: '12'
 order: 9
 ---
