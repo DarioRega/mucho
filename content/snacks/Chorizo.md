@@ -1,7 +1,7 @@
 ---
 category: snacks
-name: Steak de poulet sauce moutarde
-price: '21'
+name: 'Hot honey octopus, sauce tomates séchées'
+price: '29'
 order: 6
 ---
 
