@@ -1,6 +1,6 @@
 ---
-name: 'Glace vanille, huile de feuille de figuier'
-price: '8'
+name: 'Moelleux aux marrons, glace vanille'
+price: '11'
 order: 10
 ---
 
