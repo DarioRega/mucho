@@ -1,8 +1,8 @@
 ---
 category: snacks
 active: true
-name: 'Köfte boeuf/agneau, sauce poivrons '
-price: '18'
+name: 'Short Rib de boeuf, jus corsé, gremolata'
+price: '25'
 order: 4
 ---
 
