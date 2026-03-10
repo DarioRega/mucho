@@ -1,7 +1,7 @@
 ---
 category: snacks
 active: true
-name: 'Carottes rôties, emulsion d''ail & tahina'
+name: 'Cima Di Rapa, pesto maison'
 price: '12'
 order: 9
 ---
