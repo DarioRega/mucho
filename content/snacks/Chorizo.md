@@ -1,6 +1,6 @@
 ---
 category: snacks
-name: 'Poulpe grillé à l''ail des ours, fèves et artichaut'
+name: 'Salade de poulpe, aneth & fèves'
 price: '16'
 order: 6
 ---
