@@ -1,6 +1,6 @@
 ---
-name: Taramasalata
-price: '15'
+name: Spanakopita
+price: '12'
 order: 3
 ---
 
