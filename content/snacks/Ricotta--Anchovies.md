@@ -1,7 +1,7 @@
 ---
 category: snacks
 active: true
-name: 'Sole entière, sauce beurre & safran (w-e uniquement)'
+name: 'Artichauts confits, fenouil & citron'
 price: '50'
 order: 9
 ---
