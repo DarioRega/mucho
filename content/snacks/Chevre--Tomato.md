@@ -1,8 +1,8 @@
 ---
 category: snacks
 active: true
-name: 'Short Rib de boeuf, jus corsé à la grenade'
-price: '29'
+name: 'Salade de boeuf, mélisse & menthe'
+price: '27'
 order: 4
 ---
 
