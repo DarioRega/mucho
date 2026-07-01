@@ -1,6 +1,6 @@
 ---
 category: snacks
-name: Patatas Bravas
+name: Panzanella
 price: '12'
 order: 8
 ---
