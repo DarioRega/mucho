@@ -1,6 +1,6 @@
 ---
-name: 'Moelleux aux marrons, glace vanille'
-price: '11'
+name: Semifreddo miel et pistaches
+price: '9'
 order: 10
 ---
 
