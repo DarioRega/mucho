@@ -1,6 +1,6 @@
 ---
-name: Aubergines confites
-price: '5'
+name: Antipasto d'aubergines
+price: '8'
 order: 4
 ---
 
