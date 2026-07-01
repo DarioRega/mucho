@@ -1,8 +1,8 @@
 ---
 category: snacks
 active: true
-name: 'Salade de boeuf, mélisse & menthe'
-price: '27'
+name: 'Poulpe, ajo blanco & huile de figuier'
+price: '19'
 order: 4
 ---
 
