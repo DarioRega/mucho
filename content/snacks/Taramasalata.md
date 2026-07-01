@@ -1,5 +1,5 @@
 ---
-name: Spanakopita
+name: Caponata
 price: '12'
 order: 3
 ---
