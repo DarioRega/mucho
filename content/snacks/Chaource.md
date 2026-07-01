@@ -2,7 +2,7 @@
 category: snacks
 active: true
 name: Olives Marinées
-price: '4'
+price: '5'
 order: 1
 ---
 
