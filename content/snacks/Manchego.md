@@ -1,6 +1,6 @@
 ---
 name: Manchego
 price: '12'
-order: 6
+order: 3
 ---
 
