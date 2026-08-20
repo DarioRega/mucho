@@ -1,6 +1,6 @@
 ---
 name: Moussaka (2 pers.)
-price: '40'
+price: '35'
 order: 8
 ---
 
