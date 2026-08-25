@@ -17,6 +17,6 @@ description: |
 
   Écrivez-nous à hello@muchobar.ch et on vous prépare une proposition personnalisée.
 imgSrc: /b-19 (2).jpg
-active: true
+active: false
 ---
 
