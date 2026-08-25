@@ -1,5 +1,5 @@
 ---
-title: Privatisations
+title: PRIVATISATIONS
 whenAndWhere: Votre événement au Mucho Bar
 description: |
   À la recherche d'un lieu chaleureux pour un anniversaire, une soirée d'entreprise ou une soirée privée ? 
@@ -10,7 +10,7 @@ description: |
   Capacité : Max. 55 personnes debout / 30 personnes assises.
   Format : Cocktail dînatoire en tables hautes ou repas assis à table
   Minimum de consommation : En fonction du jour de la semaine
-  Menu : Repas dès CHF 40.– par personne, apéritifs dès CHF 20.- par personne
+  Menu : Repas dès CHF 40.– pp, apéritifs dès CHF 20.- pp
   Boissons : L'équipe se tient à disposition pour élaborer une proposition personnalisée
 
   Envie d'en savoir plus? 
