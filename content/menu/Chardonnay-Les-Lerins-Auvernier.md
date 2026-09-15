@@ -1,7 +1,7 @@
 ---
-category: wines
 name: Chardonnay · Les Lerins · Auvernier
 price: '7.5'
-order: 2
+category: content/menu-categories/Vins.md
+order: 3
+active: true
 ---
-

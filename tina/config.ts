@@ -143,9 +143,9 @@ export default defineConfig({
         ]
       },
       {
-        name: "snack",
-        label: "snacks",
-        path: "content/snacks",
+        name: "menuCategory",
+        label: "carte - catégories",
+        path: "content/menu-categories",
         ui: {
           filename: {
             readonly: true
@@ -153,30 +153,24 @@ export default defineConfig({
         },
         fields: [
           {
-            label: "Name",
-            name: "name",
             type: "string",
-            required: true,
-            isTitle: true
-          },
-          {
-            label: "Price",
-            name: "price",
-            type: "string",
+            name: "title",
+            label: "Titre",
+            isTitle: true,
             required: true
           },
           {
             type: "number",
             name: "order",
-            label: "Order",
+            label: "Ordre d'affichage",
             required: true
           }
         ]
       },
       {
-        name: "wine",
-        label: "wines",
-        path: "content/wines",
+        name: "menuItem",
+        label: "carte - plats & vins",
+        path: "content/menu",
         ui: {
           filename: {
             readonly: true
@@ -184,54 +178,35 @@ export default defineConfig({
         },
         fields: [
           {
-            label: "Name",
-            name: "name",
             type: "string",
+            name: "name",
+            label: "Nom",
             required: true,
             isTitle: true
           },
           {
-            label: "Price",
-            name: "price",
             type: "string",
+            name: "price",
+            label: "Prix",
+            required: true
+          },
+          {
+            type: "reference",
+            name: "category",
+            label: "Catégorie",
+            collections: ["menuCategory"],
             required: true
           },
           {
             type: "number",
             name: "order",
-            label: "Order",
-            required: true
-          }
-        ]
-      },
-      {
-        name: "cocktail",
-        label: "cocktails",
-        path: "content/cocktails",
-        ui: {
-          filename: {
-            readonly: true
-          }
-        },
-        fields: [
-          {
-            label: "Name",
-            name: "name",
-            type: "string",
-            required: true,
-            isTitle: true
-          },
-          {
-            label: "Price",
-            name: "price",
-            type: "string",
+            label: "Ordre dans la catégorie",
             required: true
           },
           {
-            type: "number",
-            name: "order",
-            label: "Order",
-            required: true
+            type: "boolean",
+            name: "active",
+            label: "Affiché sur le site ?"
           }
         ]
       },
