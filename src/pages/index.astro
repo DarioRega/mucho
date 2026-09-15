@@ -25,15 +25,21 @@ const menuSection = _sections.find((section) => {
   return section.isMenu;
 });
 
-const snacksResponse = await client.queries.snackConnection();
-const snacks = snacksResponse.data.snackConnection.edges
+const menuItemsResponse = await client.queries.menuItemConnection();
+const menuItems = menuItemsResponse.data.menuItemConnection.edges
   .map((edge) => edge.node)
+  .filter((item) => item.active !== false)
   .sort((a, b) => a.order - b.order);
 
-const winesResponse = await client.queries.wineConnection();
-const wines = winesResponse.data.wineConnection.edges
+const categoriesResponse = await client.queries.menuCategoryConnection();
+const menu = categoriesResponse.data.menuCategoryConnection.edges
   .map((edge) => edge.node)
-  .sort((a, b) => a.order - b.order);
+  .sort((a, b) => a.order - b.order)
+  .map((category) => ({
+    ...category,
+    items: menuItems.filter((item) => item.category?.id === category.id)
+  }))
+  .filter((category) => category.items.length > 0);
 ---
 
 <Layout title="CAFE BAR Y MUCHO MAS">
@@ -112,30 +118,22 @@ const wines = winesResponse.data.wineConnection.edges
           <h2 class="text-xl" id="menu">
             <strong>MENU</strong> change au fil des saisons et de nos humeurs
           </h2>
-          <dl>
-            <h3 class="text-lg"><strong>ASSIETTES</strong></h3>
+          {
+            menu.map((category) => (
+              <dl>
+                <h3 class="text-lg">
+                  <strong>{category.title.toUpperCase()}</strong>
+                </h3>
 
-            {
-              snacks.map((snack) => (
-                <div class="flex justify-between text-lg font-light">
-                  <dt>{snack.name}</dt>
-                  <dd>{snack.price}</dd>
-                </div>
-              ))
-            }
-          </dl>
-          <dl>
-            <h3 class="text-lg"><strong>VINS</strong></h3>
-
-            {
-              wines.map((wine) => (
-                <div class="flex justify-between text-lg font-light">
-                  <dt>{wine.name}</dt>
-                  <dd>{wine.price}</dd>
-                </div>
-              ))
-            }
-          </dl>
+                {category.items.map((item) => (
+                  <div class="flex justify-between text-lg font-light">
+                    <dt>{item.name}</dt>
+                    <dd>{item.price}</dd>
+                  </div>
+                ))}
+              </dl>
+            ))
+          }
         </div>
       </Fragment>
 
