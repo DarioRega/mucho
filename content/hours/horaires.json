@@ -1,0 +1,39 @@
+{
+  "week": [
+    {
+      "day": "Lundi",
+      "morning": { "closed": false, "from": "07:30", "to": "11:30" },
+      "evening": { "closed": true, "from": "", "to": "" }
+    },
+    {
+      "day": "Mardi",
+      "morning": { "closed": false, "from": "07:30", "to": "11:30" },
+      "evening": { "closed": true, "from": "", "to": "" }
+    },
+    {
+      "day": "Mercredi",
+      "morning": { "closed": false, "from": "07:30", "to": "11:30" },
+      "evening": { "closed": false, "from": "16:30", "to": "00:00" }
+    },
+    {
+      "day": "Jeudi",
+      "morning": { "closed": false, "from": "07:30", "to": "11:30" },
+      "evening": { "closed": false, "from": "16:30", "to": "00:00" }
+    },
+    {
+      "day": "Vendredi",
+      "morning": { "closed": false, "from": "07:30", "to": "11:30" },
+      "evening": { "closed": false, "from": "16:30", "to": "02:00" }
+    },
+    {
+      "day": "Samedi",
+      "morning": { "closed": true, "from": "", "to": "" },
+      "evening": { "closed": false, "from": "18:00", "to": "02:00" }
+    },
+    {
+      "day": "Dimanche",
+      "morning": { "closed": true, "from": "", "to": "" },
+      "evening": { "closed": true, "from": "", "to": "" }
+    }
+  ]
+}

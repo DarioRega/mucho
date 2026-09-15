@@ -1,4 +1,34 @@
-import { defineConfig } from "tinacms";
+import { defineConfig, type TinaField } from "tinacms";
+
+const TIME_PATTERN = /^([01]\d|2[0-3]):[0-5]\d$/;
+
+const timeField = (name: string, label: string): TinaField => ({
+  type: "string",
+  name,
+  label,
+  ui: {
+    validate: (value?: string) => {
+      if (value && !TIME_PATTERN.test(value)) {
+        return "Format attendu: HH:mm (ex. 07:30)";
+      }
+    }
+  }
+});
+
+const openingPeriod = (name: string, label: string): TinaField => ({
+  type: "object",
+  name,
+  label,
+  fields: [
+    {
+      type: "boolean",
+      name: "closed",
+      label: "Fermé"
+    },
+    timeField("from", "De"),
+    timeField("to", "À")
+  ]
+});
 
 const branch =
   process.env.GITHUB_BRANCH ||
@@ -202,6 +232,45 @@ export default defineConfig({
             name: "order",
             label: "Order",
             required: true
+          }
+        ]
+      },
+      {
+        name: "openingHours",
+        label: "horaires",
+        path: "content/hours",
+        format: "json",
+        match: {
+          include: "horaires"
+        },
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false
+          },
+          filename: {
+            readonly: true
+          }
+        },
+        fields: [
+          {
+            type: "object",
+            name: "week",
+            label: "Semaine",
+            list: true,
+            ui: {
+              itemProps: (item) => ({ label: item?.day })
+            },
+            fields: [
+              {
+                type: "string",
+                name: "day",
+                label: "Jour",
+                required: true
+              },
+              openingPeriod("morning", "Matin"),
+              openingPeriod("evening", "Soir")
+            ]
           }
         ]
       }
