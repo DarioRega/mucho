@@ -1,7 +1,56 @@
 ---
-const address = {
-  street: ""
-};
+import client from "../../tina/__generated__/client";
+
+const hoursResponse = await client.queries.openingHours({
+  relativePath: "horaires.json"
+});
+const week = hoursResponse.data.openingHours.week ?? [];
+
+type Period = { closed?: boolean | null; from?: string | null; to?: string | null } | null | undefined;
+
+const formatPeriod = (period: Period) =>
+  !period || period.closed || !period.from || !period.to
+    ? "Fermé"
+    : `${period.from} - ${period.to}`;
+
+const SCHEMA_DAYS = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday"
+];
+
+const openingHoursSpecification = week.flatMap((row, index) =>
+  [row?.morning, row?.evening]
+    .filter((period): period is NonNullable<Period> => !!period && !period.closed && !!period.from && !!period.to)
+    .map((period) => ({
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: SCHEMA_DAYS[index],
+      opens: period.from,
+      closes: period.to
+    }))
+);
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BarOrPub",
+  name: "Mucho Bar",
+  url: "https://muchobar.ch",
+  telephone: "+41327250444",
+  email: "hello@muchobar.ch",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Avenue de la Gare 1",
+    postalCode: "2000",
+    addressLocality: "Neuchâtel",
+    addressCountry: "CH"
+  },
+  openingHoursSpecification
+});
+
 const links = [
   {
     url: "mailto:hello@muchobar.ch",
@@ -51,41 +100,17 @@ const links = [
       <strong> HORAIRES </strong>
     </h3>
     <div class="space-y-1 text-base font-light md:text-lg">
-      <div class="grid grid-cols-5 gap-3">
-        <p>Lu</p>
-        <p class="col-span-2">07:30 - 11:30</p>
-        <p class="col-span-2">Fermé</p>
-      </div>
-      <div class="grid grid-cols-5 gap-3">
-        <p>Ma</p>
-        <p class="col-span-2">07:30 - 11:30</p>
-        <p class="col-span-2">Fermé</p>
-      </div>
-      <div class="grid grid-cols-5 gap-3">
-        <p>Me</p>
-        <p class="col-span-2">07:30 - 11:30</p>
-        <p class="col-span-2">16:30 - 00:00</p>
-      </div>
-      <div class="grid grid-cols-5 gap-3">
-        <p>Je</p>
-        <p class="col-span-2">07:30 - 11:30</p>
-        <p class="col-span-2">16:30 - 00:00</p>
-      </div>
-      <div class="grid grid-cols-5 gap-3">
-        <p>Ve</p>
-        <p class="col-span-2">07:30 - 11:30</p>
-        <p class="col-span-2">16:30 - 02:00</p>
-      </div>
-      <div class="grid grid-cols-5 gap-3">
-        <p>Sa</p>
-        <p class="col-span-2">Fermé</p>
-        <p class="col-span-2">18:00 - 02:00</p>
-      </div>
-      <div class="grid grid-cols-5 gap-3">
-        <p>Di</p>
-        <p class="col-span-2">Fermé</p>
-        <p class="col-span-2">Fermé</p>
-      </div>
+      {
+        week.map((row) => (
+          <div class="grid grid-cols-5 gap-3">
+            <p>{row?.day?.slice(0, 2)}</p>
+            <p class="col-span-2">{formatPeriod(row?.morning)}</p>
+            <p class="col-span-2">{formatPeriod(row?.evening)}</p>
+          </div>
+        ))
+      }
     </div>
   </div>
 </footer>
+
+<script type="application/ld+json" set:html={jsonLd} />
